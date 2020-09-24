@@ -1,0 +1,12 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: configServer
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yliang04/ReactiveChat/ConfigRepo
+          username: yliang04
+          password: y1yL08854
