@@ -7,6 +7,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/yliang04/reactive-chat/config-repo
-          username: yliang04
-          password: y1yL08854
+          uri: https://github.com/yliang04/reactive-chat
+          search-paths: config-repo
