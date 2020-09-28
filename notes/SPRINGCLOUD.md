@@ -1,4 +1,4 @@
-## Spring Cloud
+## Spring Cloud Function
 * `spring-cloud` version **Greenwich** and below uses `spring-cloud-stream-reactive`
 to provide reactive API. However, in version **Hoxton** and above, it is now
 using `spring-cloud-function` which provides native reactive API support. 
