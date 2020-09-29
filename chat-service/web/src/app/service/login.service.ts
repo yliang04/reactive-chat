@@ -20,6 +20,7 @@ export class LoginService {
     this.http.get('user', {headers: headers}).subscribe(response => {
       this.authenticated = !!response['name'];
       this.username = response as string;
+      console.log(response);
 
       return callback && callback();
     });

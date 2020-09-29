@@ -23,4 +23,8 @@ export class AppComponent {
     return this.login.username;
   }
 
+  logout(): void {
+    this.login.logout();
+  }
+
 }

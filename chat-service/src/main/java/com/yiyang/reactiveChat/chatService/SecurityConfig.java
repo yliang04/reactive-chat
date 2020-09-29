@@ -24,6 +24,8 @@ public class SecurityConfig {
             "/",
             "/chat",
             "/login",
-            "*.bundle.*"
+            "/user",
+            "/**.css",
+            "/**.js"
     };
 }
