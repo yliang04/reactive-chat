@@ -16,6 +16,8 @@ public class SecurityConfig {
                 .anyExchange()
                 .authenticated()
                 .and()
+                .httpBasic()
+                .and()
                 .build();
     }
 

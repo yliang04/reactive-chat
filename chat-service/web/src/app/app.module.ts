@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, Http
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from "@angular/forms";
 import {LoginService} from "./service/login.service";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 //Create custom http interceptor to change http header
@@ -32,7 +33,8 @@ export class XhrInterceptor implements HttpInterceptor {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [LoginService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]

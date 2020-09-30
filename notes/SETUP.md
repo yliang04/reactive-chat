@@ -1,12 +1,17 @@
 ## NOTE on Setting Up Angular Client App
 #### How to create client with Angular
-1. In project root directory. Run `ng new web`. This will create a sub
+1. In project root directory. Run `ng new web --routing --scss`. This will create a sub
 folder web in the directory.
 
 2. Enter the newly created folder, and use `ng generate component` and 
 `ng generate service` to start building angular app
 
-3. To change angular port from **4200** to **8080**, modify **_angular.json_**
+3. Add bootstrap by doing
+```
+ng add @ng-bootstrap/ng-bootstrap
+```     
+
+4. To change angular port from **4200** to **8080**, modify **_angular.json_**
 with 
 ```
         "serve": {
