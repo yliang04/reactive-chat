@@ -23,7 +23,6 @@ with
 ```
 
 
-
 #### How to include angular in spring build process
 ###### angular.json
 1. change `"outputPath":` from `dist/<project name>` to `dist/static`
