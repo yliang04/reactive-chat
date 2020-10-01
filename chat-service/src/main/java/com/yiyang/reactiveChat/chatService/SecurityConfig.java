@@ -24,10 +24,12 @@ public class SecurityConfig {
     private static final String[] ALLOW_LIST = {
             "/index.html",
             "/",
-            "/chat",
+            "/chat/**",
+            "/topic/**",
             "/login",
             "/user",
             "/**.css",
-            "/**.js"
+            "/**.js",
+            "/**.ico"
     };
 }
