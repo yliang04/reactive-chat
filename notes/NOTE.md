@@ -1,4 +1,4 @@
-# NOTE
+# Learning Note
 
 * Bean should not have the same name, otherwise Sprint Boot is going to
 use the later one to override the previous one.
@@ -39,3 +39,18 @@ method. I had to use `PostMapping` instead.
 * `@SpringBootApplication` which contains `@componentScan` needs to 
 stay at the top(root) of the project structure so that it can scan
 all the subpackages
+
+* `Flux` and `FluxSink` is a very useful technique to create a flux of objects
+when the source of these objects are not reactive. For example
+```
+    private Flux<Message<String>> flux;
+    private FluxSink<Message<String>> chatMessageSink;
+
+    public OutboundChatService() {
+            this.flux = Flux.<Message<String>>create(emitter -> this.chatMessageSink = emitter,
+                    FluxSink.OverflowStrategy.IGNORE)
+                            .publish()
+                            .autoConnect();
+    }
+```
+

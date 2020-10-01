@@ -19,7 +19,7 @@ public class WebSocketConfig {
                                      OutboundChatService outboundChatService)
     {
         Map<String, WebSocketHandler> urlMap = new HashMap<>();
-        urlMap.put("/app/chatMessage.new", inboundChatService);
+        urlMap.put("/chat/chatMessage.new", inboundChatService);
         urlMap.put("/topic/chatMessage.new", outboundChatService);
 
         SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();

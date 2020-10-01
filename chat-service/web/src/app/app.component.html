@@ -1,14 +1,19 @@
-<h1 class="display-1 text-dark">Play Ground</h1>
+<div class="d-flex justify-content-start">
+  <h6 class="text-dark">Play Ground</h6>
+</div>
 <div [hidden]="authenticated()">
   <app-login></app-login>
 </div>
 <div [hidden]="!authenticated()">
   <div class="container d-flex">
-    <div class="mr-auto p-2">
-      <h3 class="display-3 text-secondary">Welcome back </h3><h2 class="display-2 text-primary">{{getUsername()}}</h2>
+    <div class="p-2 align-self-baseline">
+      <h4 class="display-4 text-secondary">Welcome back </h4>
     </div>
-    <div class="p-2">
-      <button type="button" class="btn btn-light" (click)="logout()">Logout</button>>
+    <div class="p-2 align-self-baseline">
+      <h3 class="display-3 text-primary">{{getUsername()}}</h3>
+    </div>
+    <div class="mr-auto p-2 align-self-baseline">
+      <button type="button" class="btn btn-light" (click)="logout()">Logout</button>
     </div>
   </div>
   <div class="container">

@@ -24,6 +24,10 @@ public class OutboundChatService extends UserParsingHandshakeHandler {
                             .autoConnect();
     }
 
+    /**
+     * Listen to the RabbitMQ message broker. For every message, push it to the flux sink.
+     * @param message
+     */
     @StreamListener(ChatServiceStreams.BROKER_TO_CLIENT)
     public void listen(Message<String> message) {
         if(chatMessageSink != null) {
@@ -43,6 +47,14 @@ public class OutboundChatService extends UserParsingHandshakeHandler {
                 .log("outbound-publish-to-websocket");
     }
 
+    /**
+     * Validate user-to-user messages
+     * If an '@' sign is detected at the beginning of the message, we deem this message user-specific, meaning only
+     * matching user can receive the message. Otherwise, the message can be seen by everyone.
+     * @param message
+     * @param user
+     * @return
+     */
     private boolean validate(Message<String> message, String user) {
         if(message.getPayload().startsWith("@")) {
             String targetUser = message.getPayload().substring(1, message.getPayload().indexOf(" "));
@@ -56,6 +68,13 @@ public class OutboundChatService extends UserParsingHandshakeHandler {
         }
     }
 
+    /**
+     * Transform the message headings to indicate origin.
+     * For example, a message from Tom to public: "Hello word" -> "(Tom)(all): Hello world"
+     * For example, a message from Tom to Eric: "@Eric Hello Eric" -> (Tom): Hello Eric"
+     * @param message
+     * @return
+     */
     private String transform(Message<String> message) {
         String user = message.getHeaders().get(ChatServiceStreams.USER_HEADER, String.class);
 

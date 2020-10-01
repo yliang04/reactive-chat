@@ -16,6 +16,11 @@ public class InboundChatService extends UserParsingHandshakeHandler{
         this.chatServiceStreams = chatServiceStreams;
     }
 
+    /**
+     * For every incoming message, broadcast it to the RabbitMQ message broker.
+     * @param session
+     * @return
+     */
     @Override
     public Mono<Void> handleInternal(WebSocketSession session) {
         return session
@@ -28,7 +33,7 @@ public class InboundChatService extends UserParsingHandshakeHandler{
                 .then();
     }
 
-    public Mono<?> broadcast(String message, String user) {
+    private Mono<?> broadcast(String message, String user) {
         return Mono.fromRunnable(() -> {
             chatServiceStreams.clientToBroker().send(
                     MessageBuilder.withPayload(message)
