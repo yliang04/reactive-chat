@@ -41,7 +41,7 @@ public class OutboundChatService extends UserParsingHandshakeHandler {
         return session
                 .send(this.flux
                         .filter(s -> validate(s, getUser(session.getId())))
-                        .map(this::transform)
+                        .map(m -> transform(m, getUser(session.getId())))
                         .map(session::textMessage)
                         .log("outbound-wrap-as-websocket-message"))
                 .log("outbound-publish-to-websocket");
@@ -73,10 +73,10 @@ public class OutboundChatService extends UserParsingHandshakeHandler {
      * For example, a message from Tom to public: "Hello word" -> "Tom (to all): Hello world"
      * For example, a message from Tom to Eric: "@Eric Hello Eric" -> Tom (to you): Hello Eric"
      * @param message message payload
+     * @param user user name of current session
      * @return Transformed message
      */
-    private String transform(Message<String> message) {
-        String user = message.getHeaders().get(ChatServiceStreams.USER_HEADER, String.class);
+    private String transform(Message<String> message, String user) {
         String payload = message.getPayload();
 
         if(payload.startsWith("@")) {
