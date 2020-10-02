@@ -1,13 +1,19 @@
 # reactive-chat
 
-#### Introduction
+### Introduction
+This is a Spring Boot application I built while learning Spring Cloud Stream and 
+Spring Security. Here is a quick walk through of the features
 
+* Structured with Eureka and Spring Cloud Config allow easier scale.
+* Basic HTTP authentication via Spring Security.
+* MongoDB in the backend with Spring Data Mongo Reactive
+* Angular frontend
+* Websocket communication
 
-#### Video Demo
-You can watch a quick demo of this video here at this Youtube  [link](https://youtu.be/fnrLu-vumns).
+### Video Demo
+Watch a quick demo of this video here at this Youtube  [link](https://youtu.be/fnrLu-vumns).
 
-
-#### TODO
+### TODO
 * Scaling
     * Move the login services to the user0service program.
 * Security
