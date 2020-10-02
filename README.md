@@ -11,7 +11,7 @@ Spring Security. Here is a quick walk through of the features
 * Websocket communication
 
 ### Video Demo
-Watch a quick demo of this video here at this Youtube  [link](https://youtu.be/fnrLu-vumns).
+Watch a quick demo of this application here at this Youtube [link](https://youtu.be/fnrLu-vumns).
 
 ### TODO
 * Scaling
