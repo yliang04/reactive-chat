@@ -16,3 +16,7 @@ In Spring Security 5, the default is DelegatingPasswordEncoder, which required P
 * Browser will still pop basic authentication dialog for user and password even if I
 have `ServerHttpSecurity` set up. This is because in my templates I made http requests
 to `/user` with a  "WWW-Authenticate" header. I need to find a way suppress the headers.
+
+* Logout in Spring Security redirects to /login?logout by default. To redirect to a 
+different url, I can set a  `RedirectServerLogoutSuccessHandler` in `logoutSuccessHandler`
+int the filter chain.
