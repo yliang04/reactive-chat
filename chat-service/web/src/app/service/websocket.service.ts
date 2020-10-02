@@ -14,13 +14,18 @@ export class WebsocketService {
 
   constructor(private loginService: LoginService) { }
 
+  /**
+   * WebSocket by default will apply JSON.stringify() on messages sent over the channel. If the message is already string,
+   * the message will be wrapped by leading and trailing double quotes. This is not desirable. To workaround this, I will
+   * add a custom serializer which does nothing since I'm sure the messages are already sting.
+   */
   public getOutboundChannel(): WebSocketSubject<any> {
     if(this.outboundChannel) {
       return this.outboundChannel;
     }
 
     let username = this.loginService.username;
-    return webSocket(WebsocketConfig.OUTBOUND_CHAT_ENDPOINT + "?username=" + username);
+    return webSocket({url: WebsocketConfig.OUTBOUND_CHAT_ENDPOINT + "?username=" + username, serializer: msg => msg});
   }
 
   /**
