@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 export class LoginService {
 
   authenticated: boolean = false;
-  username: string;
+  username: string = '';
 
   constructor(private http: HttpClient, private router: Router) { }
 

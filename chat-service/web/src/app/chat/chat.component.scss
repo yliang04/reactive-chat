@@ -9,8 +9,15 @@
   width: 100%;
 }
 
-.message {
+.message-box {
+  text-align: left;
+  vertical-align: middle;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
   max-width: 80%;
-  margin-left: 2vh;
+  margin: 0.3rem 1rem;
   word-wrap: break-word;
+  background-color: #e9ecf1;
+  line-height: 1.5;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }

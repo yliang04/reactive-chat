@@ -1,5 +1,5 @@
-<div class="text-area form-group" #scroll [scrollTop]="scroll.scrollHeight">
-  <div class="message" *ngFor="let message of chat">
+<div class="text-area form-group d-flex flex-column align-items-start" #scroll [scrollTop]="scroll.scrollHeight">
+  <div class="message-box rounded" *ngFor="let message of chat">
     <span>{{message}}</span>
   </div>
 </div>

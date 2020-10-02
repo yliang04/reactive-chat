@@ -19,6 +19,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
   input: string = '';
 
   ngOnInit(): void {
+    this.chat.push("dsdad");
+    this.chat.push("Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.");
   }
 
   ngAfterViewInit() {
