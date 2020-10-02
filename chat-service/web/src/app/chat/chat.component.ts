@@ -1,8 +1,7 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {WebsocketService} from "../service/websocket.service";
-import {LoginService} from "../service/login.service";
-import {Observable} from "rxjs";
-import {WebSocketSubject} from "rxjs/webSocket";
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { WebsocketService } from "../service/websocket.service";
+import { Observable } from "rxjs";
+import { WebSocketSubject } from "rxjs/webSocket";
 
 @Component({
   selector: 'app-chat',
@@ -18,10 +17,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   chat: string[] = []
   input: string = '';
 
-  ngOnInit(): void {
-    this.chat.push("dsdad");
-    this.chat.push("Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.");
-  }
+  ngOnInit(): void {  }
 
   ngAfterViewInit() {
     this.inboundChannel = this.websocket.getInboundChannel().asObservable();

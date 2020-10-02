@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from "rxjs";
-import {webSocket, WebSocketSubject} from "rxjs/webSocket";
-import {WebsocketConfig} from "../config/websocket.config";
-import {LoginService} from "./login.service";
+import { webSocket, WebSocketSubject } from "rxjs/webSocket";
+import { WebsocketConfig } from "../config/websocket.config";
+import { LoginService } from "./login.service";
 
 @Injectable({
   providedIn: 'root'

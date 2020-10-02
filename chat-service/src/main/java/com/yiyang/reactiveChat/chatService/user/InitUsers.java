@@ -16,8 +16,10 @@ public class InitUsers {
         return args -> {
             operations.dropCollection(User.class).subscribe();
 
-            operations.insert(new User(null, "yiyang", encoder.encode("test"), new String[]{"admin"})).subscribe();
-            operations.insert(new User(null, "shuo", encoder.encode("test"), new String[]{"guest"})).subscribe();
+            operations.insert(new User(null, "Yiyang", encoder.encode("test"), new String[]{"admin"})).subscribe();
+            operations.insert(new User(null, "Shuo", encoder.encode("test"), new String[]{"guest"})).subscribe();
+            operations.insert(new User(null, "Tom", encoder.encode("test"), new String[]{"guest"})).subscribe();
+            operations.insert(new User(null, "Eric", encoder.encode("test"), new String[]{"guest"})).subscribe();
         };
     }
 }

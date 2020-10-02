@@ -70,20 +70,26 @@ public class OutboundChatService extends UserParsingHandshakeHandler {
 
     /**
      * Transform the message headings to indicate origin.
-     * For example, a message from Tom to public: "Hello word" -> "(Tom)(all): Hello world"
-     * For example, a message from Tom to Eric: "@Eric Hello Eric" -> (Tom): Hello Eric"
-     * @param message
-     * @return
+     * For example, a message from Tom to public: "Hello word" -> "Tom (to all): Hello world"
+     * For example, a message from Tom to Eric: "@Eric Hello Eric" -> Tom (to you): Hello Eric"
+     * @param message message payload
+     * @return Transformed message
      */
     private String transform(Message<String> message) {
         String user = message.getHeaders().get(ChatServiceStreams.USER_HEADER, String.class);
+        String payload = message.getPayload();
 
-        if(message.getPayload().startsWith("@")) {
-            return "(" + user + "): " + message.getPayload();
+        if(payload.startsWith("@")) {
+            String targetUser = payload.substring(1, payload.indexOf(" "));
+
+            if(targetUser.equals(user)) {
+                targetUser = "you";
+            }
+
+            return user + " (to " + targetUser + "): " + payload.substring(payload.indexOf(" ") + 1);
         }
         else {
-            return "(" + user + ")(all): " + message.getPayload();
+            return user + " (to all): " + payload;
         }
     }
-
 }
