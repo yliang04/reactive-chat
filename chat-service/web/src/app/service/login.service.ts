@@ -37,6 +37,7 @@ export class LoginService {
     this.http.post('logout', {}, {responseType: 'text'}).subscribe(response => {
       this.authenticated = false;
       this.username = '';
+      this.router.navigateByUrl('/').finally();
     });
   }
 }

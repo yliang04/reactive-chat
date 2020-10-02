@@ -78,6 +78,11 @@ public class OutboundChatService extends UserParsingHandshakeHandler {
      */
     private String transform(Message<String> message, String user) {
         String payload = message.getPayload();
+        String sender = message.getHeaders().get(ChatServiceStreams.USER_HEADER, String.class);
+
+        if(sender.equals(user)) {
+            sender = "you";
+        }
 
         if(payload.startsWith("@")) {
             String targetUser = payload.substring(1, payload.indexOf(" "));
@@ -86,10 +91,10 @@ public class OutboundChatService extends UserParsingHandshakeHandler {
                 targetUser = "you";
             }
 
-            return user + " (to " + targetUser + "): " + payload.substring(payload.indexOf(" ") + 1);
+            return sender + " (to " + targetUser + "): " + payload.substring(payload.indexOf(" ") + 1);
         }
         else {
-            return user + " (to all): " + payload;
+            return sender + " (to all): " + payload;
         }
     }
 }
