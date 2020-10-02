@@ -15,7 +15,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
   private inboundChannel: Observable<MessageEvent>;
   private outboundChannel: WebSocketSubject<string>;
 
-  chat: string = '';
+  chat: string[] = []
+  input: string = '';
 
   ngOnInit(): void {
   }
@@ -24,16 +25,15 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.inboundChannel = this.websocket.getInboundChannel().asObservable();
     this.inboundChannel.subscribe((event: MessageEvent) => {
       console.log(event.data);
-      this.chat += event.data + '\n';
+      this.chat.push(event.data);
     });
 
     this.outboundChannel = this.websocket.getOutboundChannel();
     this.outboundChannel.asObservable().subscribe();
   }
 
-  send(message: string): void {
-    console.log("send message: " + message);
-    this.outboundChannel.next(message);
+  send(): void {
+    this.outboundChannel.next(this.input);
+    this.input = '';
   }
-
 }
